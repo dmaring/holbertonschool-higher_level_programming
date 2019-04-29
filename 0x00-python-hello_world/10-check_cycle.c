@@ -8,7 +8,7 @@
  */
 int check_cycle(listint_t *list)
 {
-	while (list->next)
+	while (list)
 	{
 		if (list < list->next)
 			return (1);
