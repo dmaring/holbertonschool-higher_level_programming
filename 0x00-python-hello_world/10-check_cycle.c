@@ -8,12 +8,15 @@
  */
 int check_cycle(listint_t *list)
 {
-	while (list)
+	listint_t *next_node = list->next;
+
+	while (next_node)
 	{
-		if (list < list->next)
+		if (list->n < next_node->n)
 			return (1);
 
 		list = list->next;
+		next_node = next_node->next;
 	}
 
 	return (0);
