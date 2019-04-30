@@ -5,3 +5,4 @@ import os
 myfile = os.environ['PYFILE']
 output = myfile + "c"
 py_compile.compile(myfile, cfile=output)
+print("Compiling {:s} ...".format(myfile))
