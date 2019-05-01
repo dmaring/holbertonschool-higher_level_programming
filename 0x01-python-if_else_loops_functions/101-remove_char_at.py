@@ -1,5 +1,5 @@
 def remove_char_at(str, n):
-    mystr = ''
+    mystr = ""
     for index, ele in enumerate(str):
         if index != n:
             mystr += ele
