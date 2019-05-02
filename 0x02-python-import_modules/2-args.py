@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-import sys
+
 
 if __name__ == "__main__":
-    syslen = len(sys.argv)
-    if syslen == 1:
+    import sys
+    argvlen = len(sys.argv)
+    if argvlen == 1:
         print("0 arguments.")
-    elif syslen == 2:
+    elif argvlen == 2:
         print("1 argument:")
-    elif syslen > 2:
-        print("{} arguments:".format(len(sys.argv)))
+    elif argvlen > 2:
+        print("{} arguments:".format(len(sys.argv) - 1))
 
     for num, element in enumerate(sys.argv):
         if num > 0:
