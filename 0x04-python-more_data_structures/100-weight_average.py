@@ -16,7 +16,7 @@ def weight_average(my_list=[]):
         sum += new_list[i]
 
     denom = 0
-    #find denominator
+    # find denominator
     for i in range(len(my_list)):
         denom += my_list[i][1]
 
