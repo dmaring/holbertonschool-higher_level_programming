@@ -18,12 +18,12 @@ def roman_to_int(roman_string):
 
         if (i + 1 < len(roman_string)):
             second = get_int(roman_string[i + 1])
-            if first < second:
-                sum += second - first
-                i += 2
-            else:
+            if first >= second:
                 sum += first
                 i += 1
+            else:
+                sum += second - first
+                i += 2
         else:
             sum += first
             i += 1
