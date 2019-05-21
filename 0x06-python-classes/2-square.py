@@ -9,9 +9,11 @@ class Square:
         self.set_size(size)
 
     def get_size(self):
+        """Get the size of the square"""
         return self.__size
 
     def set_size(self, size):
+        """Set the size of the square"""
         if type(size) != int:
             raise TypeError("size must be an integer")
         if size < 0:
