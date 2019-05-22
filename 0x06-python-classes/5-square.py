@@ -6,13 +6,13 @@ class Square:
 
     def __init__(self, size=0):
         """Initiate an instance of the Square class"""
-        self.__size = size
+        self.size = size
 
     @property
     def size(self):
         """Get the size of the square"""
         return self.__size
-    
+
     @size.setter
     def size(self, value):
         """Set the size of the square"""
@@ -29,7 +29,10 @@ class Square:
 
     def my_print(self):
         """Print out square"""
-        for i in range(self.__size):
-            for i in range(self.__size):
-                print("#", end='')
+        if self.__size == 0:
             print()
+        else:
+            for i in range(self.__size):
+                for i in range(self.__size):
+                    print("#", end='')
+                print()
