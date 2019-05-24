@@ -3,6 +3,7 @@
 Integers addition module
 """
 
+
 def add_integer(a, b=98):
     """This function returns the sum of two integers"""
     if (type(a) is not int) and (type(a) is not float):
