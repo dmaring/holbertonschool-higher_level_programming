@@ -1,0 +1,49 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+A function that a function that prints a text with 2 new lines
+after each of these characters: ., ? and :
+
+First import ``text_indentation``from the ``5-text_indentation`` module:
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+* Text must be a string, otherwise raise a TypeError exception
+>>> text_indentation(34)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+* Text with . ? : should print two newlines after
+>>> text_indentation("Hello there.")
+Hello there.
+<BLANKLINE>
+
+* Text with . ? : should print two newlines after
+>>> text_indentation("Hello there?")
+Hello there?
+<BLANKLINE>
+
+* Text with . ? : should print two newlines after
+>>> text_indentation("Hello there:")
+Hello there:
+<BLANKLINE>
+
+* Text with numbers should be excepted
+>>> text_indentation("e43")
+e43
+
+* Function should print no white space at beginning or end of line
+>>> text_indentation("   Hello   ")
+Hello
+
+* Function should print no white space at beginning or end of line
+>>> text_indentation("   \t  ")
+
+* Function should
+>>> text_indentation("Hi?\n\nThere")
+Hi?
+<BLANKLINE>
+There
