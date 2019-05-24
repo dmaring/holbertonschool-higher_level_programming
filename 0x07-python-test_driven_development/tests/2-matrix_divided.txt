@@ -1,0 +1,44 @@
+The ``Divide a matrix`` module
+======================
+
+Using ``Divide a matrix``
+-------------------
+
+matrix_divided divides two matrices of equal row length.
+
+First import ``matrix_divided``from the ``2-matrix_divided`` module:
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+* The matrix must be a list of integers or floats or raise error:
+>>> matrix_divided(2, 2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+* The matrix must be a list of integers or floats or raise error:
+>>> matrix_divided([[3, 'h', 23], [4, 34.2, '&']], 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+* Each row of the matrix must have the same size:
+>>> matrix_divided([[3, 3, 23, 3], [4, 34, 3]], 5)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+* The divisor must be a number (integer or float):
+>>> matrix_divided([[3, 3, 23], [4, 34.2, 3]], 'b')
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+* The divisor cannot be 0:
+>>> matrix_divided([[3, 3, 23], [4, 34.2, 3]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+* Elements of new matrix should be rounded to 2 decimal places:
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
