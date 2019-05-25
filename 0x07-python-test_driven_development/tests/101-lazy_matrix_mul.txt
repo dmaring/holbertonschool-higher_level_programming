@@ -1,0 +1,117 @@
+The ``101-lazy_matrix_mul`` module
+======================
+
+Using ``lazy_lazy_matrix_mul``
+-------------------
+
+A function that multiplies 2 matrices using NumPy
+
+Install NumPy using 'pip install NumPy'
+
+First import ``lazy_matrix_mul``from the ``101-lazy_lazy_matrix_mul`` module:
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+* Check for proper number of arguments
+>>> lazy_matrix_mul()
+Traceback (most recent call last):
+    ...
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+* Check for proper number of arguments
+>>> lazy_matrix_mul([3, 3])
+Traceback (most recent call last):
+    ...
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+* m_a should be a list
+>>> lazy_matrix_mul(3, [3, 3])
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list
+
+* m_b should be a list
+>>> lazy_matrix_mul([3, 3], 3)
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list
+
+* m_a should be a list of lists
+>>> matrix_a = [3]
+>>> matrix_b = [[3, 3], [4, 4]]
+>>> lazy_matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list of lists
+
+* m_b should be a list of lists
+>>> matrix_a = [[3, 3], [4, 4]]
+>>> matrix_b = [3, 4]
+>>> lazy_matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list of lists
+
+* m_a should not be an empty list
+>>> lazy_matrix_mul([], [[3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+* m_a should not be an empty list of lists
+>>> lazy_matrix_mul([[]], [[3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+* m_b should not be an empty list
+>>> lazy_matrix_mul([[3, 3], [3, 3]], [])
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
+
+* m_a should not be an empty list of lists
+>>> lazy_matrix_mul([[3, 3], [3, 3]], [[]])
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
+
+* m_a should not contain anythin but numbers
+>>> lazy_matrix_mul([['k', 3]], [[3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: m_a should contain only integers or floats
+
+* m_b should not contain anything but numbers
+>>> lazy_matrix_mul([[3, 3], [3, 3]], [['k', 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: m_b should contain only integers or floats
+
+* m_a should have equal rows
+>>> lazy_matrix_mul([[3, 3], [3, 3, 3]], [[3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_a must should be of the same size
+
+* m_b should have equal rows
+>>> lazy_matrix_mul([[3, 3], [3, 3]], [[3, 3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_b must should be of the same size
+
+
+* check that row count equals column count:
+>>> m_a = [[0, 2]]
+>>> m_b = [[3, 3, 3], [3, 3, 3], [3, 3, 3]]
+>>> lazy_matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+* Multiply matrices correctly
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+
+* Multiply matrices correctly
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
