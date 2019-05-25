@@ -22,10 +22,14 @@ def matrix_divided(matrix, div):
         for item in list:
             if not isinstance(item, (float, int)):
                 raise TypeError(lol_error)
+            if any([item == float('inf'), item == float('nan')]):
+                raise TypeError(lol_error)
 
     if not isinstance(div, (float, int)):
         raise TypeError("div must be a number")
 
+    if div == float('inf'):
+        raise TypeError("div must be a number")
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
