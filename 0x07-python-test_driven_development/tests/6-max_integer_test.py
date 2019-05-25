@@ -18,6 +18,14 @@ class TestMaxInteger(unittest.TestCase):
         """test max_ordered"""
         self.assertEqual(max_integer([-1, -3, 4, 2]), 4)
 
+    def test_max_beginning(self):
+        """test max_ordered"""
+        self.assertEqual(max_integer([23, -3, 4, 2]), 23)
+
+    def test_one_element(self):
+        """test max_ordered"""
+        self.assertEqual(max_integer([23]), 23)
+
     def test_max_same_number(self):
         """test max_ordered"""
         self.assertEqual(max_integer([4, 4, 4, 4]), 4)
