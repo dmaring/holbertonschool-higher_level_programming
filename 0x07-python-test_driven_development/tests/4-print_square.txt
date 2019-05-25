@@ -9,6 +9,12 @@ A function that prints a square with the character #
 First import ``print_square``from the ``4-print_square`` module:
 >>> print_square = __import__('4-print_square').print_square
 
+* No arguments passed
+>>> print_square()
+Traceback (most recent call last):
+    ...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
 * Size must be of type integer
 >>> print_square("h")
 Traceback (most recent call last):
