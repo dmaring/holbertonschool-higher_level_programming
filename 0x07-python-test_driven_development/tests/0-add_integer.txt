@@ -49,3 +49,40 @@ Traceback (most recent call last):
 ...
     raise TypeError("a must be an integer")
 TypeError: a must be an integer
+
+Check for NaN
+>>> add_integer(float('nan'), 3)
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
+
+Check for NaN
+>>> add_integer(3, float('nan'))
+Traceback (most recent call last):
+...
+    raise TypeError("a must be an integer")
+ValueError: cannot convert float NaN to integer
+
+Check for infinity
+>>> add_integer(3, float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+Check for infinity
+>>> add_integer(float('inf'), 3)
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+Check for negative infinity
+>>> add_integer(float('-inf'), 3)
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+
+Check for negative infinity
+>>> add_integer(3, float('-inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
