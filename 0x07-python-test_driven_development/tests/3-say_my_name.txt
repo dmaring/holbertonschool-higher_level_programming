@@ -22,7 +22,11 @@ TypeError: last_name must be a string
 
 * Optionally only enter first name:
 >>> say_my_name("Susie")
-My name is Susie
+My name is Susie 
+
+* Optionally only enter first name:
+>>> say_my_name("Bob")
+My name is Bob 
 
 * Say name correctly:
 >>> say_my_name("Sam", "Johnson")
