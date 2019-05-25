@@ -58,15 +58,30 @@ def matrix_mul(m_a, m_b):
             raise TypeError("each row of m_b must should be of the same size")
 
     # find number of columns/items in list[0] of m_a
-    column_count = 0
-    for l in m_a:
-        for item in l:
-            column_count += 1
+    col_count_a = 0
+    for col in m_a[0]:
+        col_count_a += 1
+    # find number of rows in m_a
+    row_count_a = 0
+    for row in m_a:
+        row_count_a += 1
+    # find number of cols in m_b
+    col_count_b = 0
+    for col in m_b[0]:
+            col_count_b += 1
     # find number of rows in m_b
-    row_count = 0
+    row_count_b = 0
     for row in m_b:
-        row_count += 1
+        row_count_b += 1
     # compare the two
-#    print(str(column_count) + " " + str(row_count))
-    if column_count != row_count:
+    if col_count_a != row_count_b:
         raise ValueError("m_a and m_b can't be multiplied")
+
+    # initialize new matrix
+    C = [[0 for row in range(col_count_b)] for col in range(row_count_a)]
+
+    for i in range(row_count_a):
+        for j in range(col_count_b):
+            for k in range(col_count_a):
+                C[i][j] += m_a[i][k] * m_b[k][j]
+    return(C)
