@@ -9,6 +9,18 @@ matrix_divided divides two matrices of equal row length.
 First import ``matrix_divided``from the ``2-matrix_divided`` module:
     >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
+* Missing 2 arguments
+>>> matrix_divided()
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
+
+* Missing div argument
+>>> matrix_divided(2)
+Traceback (most recent call last):
+    ...
+TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
 * The matrix must be a list of integers or floats or raise error:
 >>> matrix_divided(2, 2)
 Traceback (most recent call last):
@@ -20,6 +32,12 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 Traceback (most recent call last):
 ...
 TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+* The matrix must not be divided by infinite
+>>> matrix_divided([[3, 3, 23], [4, 34, 2]], float('inf'))
+Traceback (most recent call last):
+...
+TypeError: div must be a number
 
 * Each row of the matrix must have the same size:
 >>> matrix_divided([[3, 3, 23, 3], [4, 34, 3]], 5)
@@ -38,6 +56,19 @@ TypeError: div must be a number
 Traceback (most recent call last):
 ...
 ZeroDivisionError: division by zero
+
+* Matrix cannot contain inf or nan
+>>> matrix_divided([[float('inf'), 3, 23], [4, 34.2, float('nan')]], 3)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+* Matrix cannot contain inf or nan and divide by 'inf'
+>>> matrix_divided([[float('inf'), 3], [34.2, float('nan')]], float('inf'))
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
 
 * Elements of new matrix should be rounded to 2 decimal places:
 >>> matrix_divided([[1, 2, 3], [4, 5, 6]], 3)
