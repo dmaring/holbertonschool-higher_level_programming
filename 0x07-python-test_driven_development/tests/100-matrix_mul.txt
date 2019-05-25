@@ -1,0 +1,103 @@
+The ``100-matrix_mul`` module
+======================
+
+Using ``text_indentation``
+-------------------
+
+A function that multiplies 2 matrices
+
+First import ``matrix_mul``from the ``100-matrix_mul`` module:
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+* m_a should be a list
+>>> matrix_mul(3, [3, 3])
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list
+
+* m_b should be a list
+>>> matrix_mul([3, 3], 3)
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list
+
+* m_a should be a list of lists
+>>> matrix_a = [3]
+>>> matrix_b = [[3, 3], [4, 4]]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list of lists
+
+* m_b should be a list of lists
+>>> matrix_a = [[3, 3], [4, 4]]
+>>> matrix_b = [3, 4]
+>>> matrix_mul(matrix_a, matrix_b)
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list of lists
+
+* m_a should not be an empty list
+>>> matrix_mul([], [[3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+* m_a should not be an empty list of lists
+>>> matrix_mul([[]], [[3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+* m_b should not be an empty list
+>>> matrix_mul([[3, 3], [3, 3]], [])
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
+
+* m_a should not be an empty list of lists
+>>> matrix_mul([[3, 3], [3, 3]], [[]])
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
+
+* m_a should not contain anythin but numbers
+>>> matrix_mul([['k', 3]], [[3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: m_a should contain only integers or floats
+
+* m_b should not contain anything but numbers
+>>> matrix_mul([[3, 3], [3, 3]], [['k', 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: m_b should contain only integers or floats
+
+* m_a should have equal rows
+>>> matrix_mul([[3, 3], [3, 3, 3]], [[3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_a must should be of the same size
+
+* m_b should have equal rows
+>>> matrix_mul([[3, 3], [3, 3]], [[3, 3, 3], [3, 3]])
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_b must should be of the same size
+
+
+* check that row count equals column count:
+>>> m_a = [[0, 2]]
+>>> m_b = [[3, 3, 3], [3, 3, 3], [3, 3, 3]]
+>>> matrix_mul(m_a, m_b)
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+
+* check that column num eq to row num
+>>> m_a = [[0, 2, 3]]
+>>> m_b = [[3, 3, 3], [3, 3, 3], [3, 3, 3]]
+>>> matrix_mul(m_a, m_b)
+>>> len(m_a[0]) is len(m_b)
+True
