@@ -40,7 +40,7 @@ TypeError: a must be an integer
 Traceback (most recent call last):
 ...
     raise TypeError("a must be an integer")
-TypeError: a must be an integer
+TypeError: b must be an integer
 
 Check to raise error if first arg is None (2nd number has default value)
 
