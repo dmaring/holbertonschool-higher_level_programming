@@ -79,4 +79,4 @@ def lazy_matrix_mul(m_a, m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
     ret_matrix = np.dot(m_a, m_b)
-    print(ret_matrix)
+    return(ret_matrix)
