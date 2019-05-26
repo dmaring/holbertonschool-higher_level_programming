@@ -78,13 +78,5 @@ def lazy_matrix_mul(m_a, m_b):
     if col_count_a != row_count_b:
         raise ValueError("m_a and m_b can't be multiplied")
 
-    ret_matrix = np.multiply(m_a, m_b)
+    ret_matrix = np.dot(m_a, m_b)
     print(ret_matrix)
-    # # initialize new matrix
-    # C = [[0 for row in range(col_count_b)] for col in range(row_count_a)]
-
-    # for i in range(row_count_a):
-    #     for j in range(col_count_b):
-    #         for k in range(col_count_a):
-    #             C[i][j] += m_a[i][k] * m_b[k][j]
-    # return(C)
