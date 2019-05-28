@@ -1,13 +1,22 @@
-# 0x05. Python - Exceptions
+# 0x08. Python - More Classes and Objects
 ## About this project
 
-* What’s the difference between errors and exceptions
-* What are exceptions and how to use them
-* When do we need to use exceptions
-* How to correctly handle an exception
-* What’s the purpose of catching exceptions
-* How to raise a builtin exception
-* When do we need to implement a clean-up action after an exception
+* What is the special __init__ method and how to use it
+* What is Data Abstraction, Data Encapsulation, and Information Hiding
+* What is a property
+* What is the difference between an attribute and a property in Python
+* What is the Pythonic way to write getters and setters in Python
+* What are the special __str__ and __repr__ methods and how to use them
+* What is the difference between __str__ and __repr__
+* What is a class attribute
+* What is the difference between a object attribute and a class attribute
+* What is a class method
+* What is a static method
+* How to dynamically create arbitrary new attributes for existing instances of a class
+* How to bind attributes to object and classes
+* What is and what does contain __dict__ of a class and of an instance of a class
+* How does Python find the attributes of an object or class
+* How to use the getattr function
 
 
 ## Requirements
@@ -16,42 +25,22 @@
 
 ## File Descriptions
 ### Mandatory
-**[0-safe_print_list.py](0-safe_print_list.py)** - a function that prints x elements of a list
+**[0-rectangle.py](0-rectangle.py)** - an empty class Rectangle that defines a rectangle.
 
-**[1-safe_print_integer.py](1-safe_print_integer.py)** - a function that prints an integer with "{:d}".format().
+**[1-rectangle.py](1-rectangle.py)** - add private attributes to Rectangle
 
-**[2-safe_print_list_integers.py](2-safe_print_list_integers.py)** - a function that prints the first x elements of a list and only integers.
+**[2-rectangle.py](2-rectangle.py)** - add instance methods for area and perimeter
 
-**[3-safe_print_division.py](3-safe_print_division.py)** - a function that divides 2 integers and prints the result.
+**[3-rectangle.py](3-rectangle.py)** - add __str__ method to return correct string format of object
 
-**[4-list_division.py](4-list_division.py)** - a function that divides element by element 2 lists.
+**[4-rectangle.py](4-rectangle.py)** - add __repr__ method to be able to reproduce object with eval()
 
-**[5-raise_exception.py](5-raise_exception.py)** - a function that raises a type exception.
+**[5-rectangle.py](5-rectangle.py)** - add __del__ method to print a message when instance is destroyed
 
-**[6-raise_exception_msg.py](6-raise_exception_msg.py)** - a function that raises a name exception with a message.
+**[6-rectangle.py](6-rectangle.py)** - add public class attribute to track number of instances created
 
+**[7-rectangle.py](7-rectangle.py)** - use print_symbol attribute to return string represenation of the instance
 
+**[8-rectangle.py](8-rectangle.py)** - add static method to compare two instances of a Rectangle
 
-### Advanced
-**[100-safe_print_integer_err.py](100-safe_print_integer_err.py)** - Write a function that prints an integer.
-
-* Prototype: def safe_print_integer_err(value):
-* value can be any type (integer, string, etc.)
-* The integer should be printed followed by a new line
-* Returns True if value has been correctly printed (it means the value is an integer)
-* Otherwise, returns False and prints in stderr the error precede by Exception:
-* You have to use try: / except:
-* You have to use "{:d}".format() to print as integer
-* You are not allowed to use type()
-
-**[101-safe_function.py](101-safe_function.py)** - Write a function that prints an integer.
-
-* Prototype: def safe_function(fct, *args):
-* You can assume fct will be always a pointer to a function
-* Returns the result of the function,
-* Otherwise, returns None if something happens during the function and prints in stderr the error precede by Exception:
-* You have to use try: / except:
-
-**[102-magic_calculation.py](102-magic_calculation.py)** - Write the Python function def magic_calculation(a, b): that does exactly the same as the given Python bytecode.
-
-**[103-python.c](103-python.c)** - Create three C functions that print some basic info about Python lists, Python bytes an Python float objects.
+**[9-rectangle.py](9-rectangle.py)** - add class method square() that constructs a rectangle with only one argument
