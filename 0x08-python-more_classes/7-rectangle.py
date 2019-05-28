@@ -78,7 +78,3 @@ class Rectangle:
     @classmethod
     def dec_instances(cls):
         cls.number_of_instances -= 1
-
-    @classmethod
-    def dec_instances(cls):
-        cls.number_of_instances -= 1
