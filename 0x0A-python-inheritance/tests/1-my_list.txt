@@ -66,34 +66,11 @@ True
 >>> my_list.print_sorted()
 []
 
-# * Text with . ? : should print two newlines after
-# >>> text_indentation("Hello there.")
-# Hello there.
-# <BLANKLINE>
-
-# * Text with . ? : should print two newlines after
-# >>> text_indentation("Hello there?")
-# Hello there?
-# <BLANKLINE>
-
-# * Text with . ? : should print two newlines after
-# >>> text_indentation("Hello there:")
-# Hello there:
-# <BLANKLINE>
-
-# * Text with numbers should be excepted
-# >>> text_indentation("e43")
-# e43
-
-# * Function should print no white space at beginning or end of line
-# >>> text_indentation("   Hello   ")
-# Hello
-
-# * Function should print no white space at beginning or end of line
-# >>> text_indentation("   \t  ")
-
-# * Function should
-# >>> text_indentation("Hi?\n\nThere")
-# Hi?
-# <BLANKLINE>
-# There
+* check print_sorted returns a new list
+>>> my_list = MyList([2, 20, -4, 5])
+>>> print(my_list)
+[2, 20, -4, 5]
+>>> my_list.print_sorted()
+[-4, 2, 5, 20]
+>>> print(my_list)
+[2, 20, -4, 5]
