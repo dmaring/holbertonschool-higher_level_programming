@@ -21,7 +21,6 @@ def load_add_save():
 
     for i in range(len(sys.argv)):
         if i > 0:
-            print(sys.argv[i])
             list_obj.append(sys.argv[i])
 
     save_to_json_file(list_obj, 'add_item.json')
