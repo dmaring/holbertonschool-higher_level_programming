@@ -23,4 +23,5 @@ class Student:
             return(self.__dict__.copy())
 
     def reload_from_json(self, json):
-        self.__init__(json['first_name'], json['last_name'], json['age'])
+        for k, v in json.items():
+            self.__dict__[k] = v
