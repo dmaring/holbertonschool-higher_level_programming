@@ -10,6 +10,34 @@ First import ``integer_validate`` from the ``7-base_geometry`` module:
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
+* area() method should return correct message
+>>> bg.integer_validator("name", 5)
+>>> bg.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+
+* check integer_validator with no arguments
+>>> bg.integer_validator()
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+* check integer_validator with no age argument
+>>> bg.integer_validator('age')
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+* check integer_validator
+>>> bg.integer_validator('age', 1)
+
+* check integer_validator
+>>> bg.integer_validator('age', 0)
+Traceback (most recent call last):
+    ...
+ValueError: age must be greater than 0
+
 * value should be an integer
 >>> bg.integer_validator("name", -87)
 Traceback (most recent call last):
