@@ -12,9 +12,12 @@ def append_after(filename="", search_string="", new_string=""):
     with open(filename, mode='r', encoding="utf-8") as f:
         full_file = f.read()
         file_list = full_file.split('\n')
-        for line in file_list:
-            ret_list.append(line + '\n')
-            if search_string in line:
+        for line in range(len(file_list)):
+            if line < len(file_list) - 1:
+                ret_list.append(file_list[line] + '\n')
+            else:
+                ret_list.append(file_list[line])
+            if search_string in file_list[line]:
                 ret_list.append(new_string)
 
     with open(filename, mode='w', encoding="utf-8") as f:
