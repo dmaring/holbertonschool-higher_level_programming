@@ -10,4 +10,5 @@ def class_to_json(obj):
     and boolean) for JSON serialization of an object.
     """
 
-    return(obj.__dict__)
+    if hasattr(obj, '__dict__'):
+        return(obj.__dict__)
