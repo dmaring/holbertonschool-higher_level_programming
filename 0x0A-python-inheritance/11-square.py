@@ -3,6 +3,7 @@
 Module that holds square class
 """
 Rectangle = __import__('9-rectangle').Rectangle
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Square(Rectangle):
@@ -10,6 +11,7 @@ class Square(Rectangle):
 
     def __init__(self, size):
         """Initiate a square with attributes"""
+        BaseGeometry.integer_validator(self, name="size", value=size)
         super().__init__(size, size)
         self.__size = size
 
