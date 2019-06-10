@@ -36,15 +36,27 @@ class Rectangle(Base):
 
     def display(self):
         """Method that prints out the rectangle"""
+        for y in range(self.__y):
+            print()
         for row in range(self.__height):
+            for x in range(self.__x):
+                print(' ', end='')
             for col in range(self.__width):
                 print('#', end='')
             print()
 
     def __str__(self):
+        """Method that returns string represenation of the instance"""
         return("[{}] ({}) {}/{} - {}/{}"
                .format(self.__class__.__name__, self.id, self.__x,
                        self.__y, self.__width, self.__height))
+
+    def update(self, *args):
+        """Method that updates the attributes of the instances"""
+        attrs = ['id', 'width', 'height', 'x', 'y']
+        for i in range(len(args)):
+            setattr(self, attrs[i], args[i])
+
 
     @property
     def width(self):
