@@ -8,6 +8,7 @@ class Rectangle(Base):
     """A class that represents a rectangle"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """This method initializes an instance of Rectangle"""
         super().__init__(id)
         self.width = width
         self.height = height
@@ -15,16 +16,35 @@ class Rectangle(Base):
         self.y = y
 
     def check_int(self, str_obj, value):
+        """Method that checks if value is an integer"""
         if not isinstance(value, int):
             raise TypeError('{} must be an integer'.format(str_obj))
 
     def check_gr_0(self, str_obj, value):
+        """Method that checks if value is greater than 0"""
         if value <= 0:
             raise ValueError('{} must be > 0'.format(str_obj))
 
     def check_gr_eq_0(self, str_obj, value):
+        """Method that checks if value is greater than or equal to 0"""
         if value < 0:
             raise ValueError('{} must be >= 0'.format(str_obj))
+
+    def area(self):
+        """Method that returns the area of a rectangle"""
+        return(self.__width * self.__height)
+
+    def display(self):
+        """Method that prints out the rectangle"""
+        for row in range(self.__height):
+            for col in range(self.__width):
+                print('#', end='')
+            print()
+
+    def __str__(self):
+        return("[{}] ({}) {}/{} - {}/{}"
+               .format(self.__class__.__name__, self.id, self.__x,
+                       self.__y, self.__width, self.__height))
 
     @property
     def width(self):

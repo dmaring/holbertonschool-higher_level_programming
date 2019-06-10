@@ -60,7 +60,7 @@ class TestRectangleClassCreation(unittest.TestCase):
         self.assertEqual(r.y, 6)
         self.assertIsNotNone(id)
 
-    def test_check_int(self):
+    def test_check_int_creation(self):
         with self.assertRaises(TypeError):
             r = Rectangle('f', 4, 5, 6, 7)
         with self.assertRaises(TypeError):
@@ -70,23 +70,48 @@ class TestRectangleClassCreation(unittest.TestCase):
         with self.assertRaises(TypeError):
             r = Rectangle(2, 3, 5, 'f', 7)
 
-    def test_check_gr_0(self):
+    def test_check_int(self):
+        with self.assertRaises(TypeError):
+            Rectangle.check_int('f', int)
+        with self.assertRaises(TypeError):
+            Rectangle.check_int([], int)
+        with self.assertRaises(TypeError):
+            Rectangle.check_int(float('nan'), int)
+
+    def test_check_gr_0_creation(self):
         with self.assertRaises(ValueError):
             r = Rectangle(0, 4, 5, 6, 7)
         with self.assertRaises(ValueError):
             r = Rectangle(2, -1, 5, 6, 7)
 
-    def test_check_gr_eq_0(self):
+    def test_check_gr_eq_0_creation(self):
         with self.assertRaises(ValueError):
             r = Rectangle(3, 4, -1, 5, 6)
         with self.assertRaises(ValueError):
             r = Rectangle(3, 4, 3, -5, 6)
 
-    def test_area(self):
+
+class TestAreaMethod(unittest.TestCase):
+    """Test area method for Rectangle class"""
+
+    def test_area_creation(self):
         r = Rectangle(3, 4, 3, 5, 6)
         self.assertEqual(r.area(), 12)
 
-    
+class TestDisplayMethod(unittest.TestCase):
+    """Test display method for Rectangle class"""
+
+    def test_display(self):
+        r = Rectangle(3, 4, 3, 5, 6)
+        self.assertEqual(r.area(), 12)
+
+class TestStrMethod(unittest.TestCase):
+    """Test __str__  method for Rectangle class"""
+
+    def test_str_output(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r_string = '[Rectangle] (4) 5/6 - 3/4'
+        self.assertEqual(r_string, r.__str__())
 
     # def test_id_negative(self):
     #     bo = Rectangle(-4)
