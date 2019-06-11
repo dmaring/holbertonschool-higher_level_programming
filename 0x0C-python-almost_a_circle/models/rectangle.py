@@ -45,18 +45,31 @@ class Rectangle(Base):
                 print('#', end='')
             print()
 
+    def to_dictionary(self):
+        rect_dict = {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+            }
+        return(rect_dict)
+
     def __str__(self):
         """Method that returns string represenation of the instance"""
         return("[{}] ({}) {}/{} - {}/{}"
-               .format(self.__class__.__name__, self.id, self.__x,
-                       self.__y, self.__width, self.__height))
+               .format(self.__class__.__name__, self.id, self.x,
+                       self.y, self.width, self.height))
 
-    def update(self, *args):
+    def update(self, *args, **kargs):
         """Method that updates the attributes of the instances"""
-        attrs = ['id', 'width', 'height', 'x', 'y']
-        for i in range(len(args)):
-            setattr(self, attrs[i], args[i])
-
+        if args:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for i in range(len(args)):
+                setattr(self, attrs[i], args[i])
+        else:
+            for k, v in kargs.items():
+                setattr(self, k, v)
 
     @property
     def width(self):

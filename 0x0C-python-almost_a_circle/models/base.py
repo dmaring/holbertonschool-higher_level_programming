@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import json
 """
 This module contains the Base class
 """
@@ -12,6 +13,22 @@ class Base():
     def __init__(self, id=None):
         """Method to initiate an object instance of Base"""
         self.id = id
+
+    def to_json_string(list_dictionaries):
+        """
+        Method that takes a list of dictionaries and returns
+        the JSON string representation of 'list_dictionaries'
+        """
+
+        if not list_dictionaries or list_dictionaries == None:
+            return([])
+        else:
+            ret_str = json.dumps(list_dictionaries)
+        return(ret_str)
+
+    @staticmethod
+    def reset_id():
+        Base.__nb_objects = 0
 
     @property
     def id(self):

@@ -1,5 +1,7 @@
+#!/usr/bin/python3
 import unittest
 from models.rectangle import Rectangle
+from models.base import Base
 """
 Module for unittests for the Rectangle class
 """
@@ -113,47 +115,90 @@ class TestStrMethod(unittest.TestCase):
         r_string = '[Rectangle] (4) 5/6 - 3/4'
         self.assertEqual(r_string, r.__str__())
 
-    # def test_id_negative(self):
-    #     bo = Rectangle(-4)
-    #     self.assertTrue(bo.id < 0)
-    #     bo = Rectangle(-10)
-    #     self.assertEqual(bo.id, -10)
+class TestUpdateMethod(unittest.TestCase):
+    """Test update method of the Rectangle class"""
 
-    # def test_id_none(self):
-    #     bo = Rectangle()
-    #     self.assertEqual(bo.id, 1)
-    #     bo = Rectangle(None)
-    #     self.assertEqual(bo.id, 2)
+    def test_no_input(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update()
+        self.assertEqual(r.id, 4)
 
-    # def test_id_inf(self):
-    #     bo = Rectangle(float('inf'))
-    #     #TODO what should this do
+    def test_one_input(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(9)
+        self.assertEqual(r.id, 9)
 
-    # def test_id_neg_inf(self):
-    #     bo = Rectangle(float('-inf'))
-    #     #TODO what should this do
+    def test_two_inputs(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(9, 20)
+        self.assertEqual(r.width, 20)
 
-    # def test_id_inf(self):
-    #     bo = Rectangle(float('-inf'))
-    #     #TODO what should this do
+    def test_three_inputs(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(9, 20, 23)
+        self.assertEqual(r.height, 23)
 
-    # def test_id_inf(self):
-    #     bo = Rectangle(float('NaN'))
-    #     #TODO what should this do
+    def test_four_inputs(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(9, 20, 23, 32)
+        self.assertEqual(r.x, 32)
 
-    # def test_nb_objects(self):
-    #     bo = Rectangle(23)
-    #     self.assertEqual(Rectangle.__nb_objects, 0)
-# def test_isupper(self):
-  #     self.assertTrue('FOO'.isupper())
-  #     self.assertFalse('Foo'.isupper())
+    def test_five_inputs(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(9, 20, 23, 32, 83)
+        self.assertEqual(r.y, 83)
 
-  # def test_split(self):
-  #     s = 'hello world'
-  #     self.assertEqual(s.split(), ['hello', 'world'])
-  #     # check that s.split fails when the separator is not a string
-  #     with self.assertRaises(TypeError):
-  #         s.split(2)
+    def test_kargs_skipped(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(9, 20, 23, 32, 83, id=4, y=8, width=10)
+        self.assertEqual(r.id, 9)
+        self.assertEqual(r.y, 83)
+        self.assertEqual(r.width, 20)
+
+    def test_kargs(self):
+        r = Rectangle(3, 4, 5, 6, 4)
+        r.update(id=4, x=5, y=8, width=10, height=20)
+        self.assertEqual(r.id, 4)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 8)
+        self.assertEqual(r.width, 10)
+        self.assertEqual(r.height, 20)
+
+class TestToDictMethod(unittest.TestCase):
+    def test_correct_output_str_(self):
+        Rectangle.reset_id()
+        r1 = Rectangle(10, 2, 1, 9)
+        self.assertEqual(str(r1), '[Rectangle] (1) 1/9 - 10/2')
+
+    def test_isinstance(self):
+        Rectangle.reset_id()
+        r1 = Rectangle(10, 2, 1)
+        rd = r1.to_dictionary()
+        self.assertIsInstance(rd, dict)
+
+    def test_correct_dict(self):
+        Rectangle.reset_id()
+        r1 = Rectangle(10, 2, 1, 9)
+        rd = r1.to_dictionary()
+        cd = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(rd, cd)
+
+    def test_update_dict_kwargs(self):
+        Rectangle.reset_id()
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle(1, 1)
+        r2.update(**r1_dict)
+        self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 10/2')
+
+    def test_update_dict_changes_object(self):
+        Rectangle.reset_id()
+        r1 = Rectangle(10, 2, 1, 9, 3)
+        rd = r1.to_dictionary()
+        r2 = Rectangle(1, 1)
+        r2.update(**rd)
+        self.assertTrue(r1 != r2)
+
 
 if __name__ == '__main__':
     unittest.main()
