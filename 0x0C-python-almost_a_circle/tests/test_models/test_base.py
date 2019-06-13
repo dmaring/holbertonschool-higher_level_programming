@@ -48,11 +48,11 @@ class TestBaseToJsonStringMethod(unittest.TestCase):
 
     def test_pass_none(self):
         ret = Base.to_json_string(None)
-        self.assertEqual(ret, [])
+        self.assertEqual(ret, "[]")
 
     def test_pass_empty_list(self):
         ret = Base.to_json_string([])
-        self.assertEqual(ret, [])
+        self.assertEqual(ret, "[]")
 
     def test_pass_one(self):
         Base.reset_id()
@@ -126,7 +126,7 @@ class TestBaseFromJsonStringMethod(unittest.TestCase):
                           '"x": 0, "y": 0}]')
 
     def test_passing_empyt_list(self):
-        self.assertEqual(Base.from_json_string('[]'), [])
+        self.assertEqual(Base.from_json_string([]), [])
 
     def test_passing_none(self):
         self.assertEqual(Base.from_json_string(None), [])

@@ -27,7 +27,7 @@ class Base():
         """
 
         if not list_dictionaries or list_dictionaries is None:
-            return([])
+            ret_str = json.dumps([])
         else:
             ret_str = json.dumps(list_dictionaries, sort_keys=True)
         return(ret_str)
