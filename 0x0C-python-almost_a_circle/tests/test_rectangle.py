@@ -2,6 +2,8 @@
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
+import io
+import contextlib
 """
 Module for unittests for the Rectangle class
 """
@@ -103,10 +105,45 @@ class TestAreaMethod(unittest.TestCase):
 class TestDisplayMethod(unittest.TestCase):
     """Test display method for Rectangle class"""
 
-    def test_display(self):
-        r = Rectangle(3, 4, 3, 5, 6)
-        self.assertEqual(r.area(), 12)
+    def setUp(self):
+        self.r1 = Rectangle(4, 6)
+        self.p1 = "####\n####\n####\n####\n####\n####\n"
+        self.r2 = Rectangle(2, 2)
+        self.p2 = "##\n##\n"
+        self.r3 = Rectangle(2, 3, 2, 2)
+        self.p3 = "\n\n  ##\n  ##\n  ##\n"
+        self.r4 = Rectangle(3, 2, 1, 0)
+        self.p4 = " ###\n ###\n"
 
+    def test_display_1(self):
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            self.r1.display()
+        ret = f.getvalue()
+        self.assertEqual(self.p1, ret)
+
+    def test_display_2(self):
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            self.r2.display()
+        ret = f.getvalue()
+        self.assertEqual(self.p2, ret)
+
+    def test_display_offset_3(self):
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            self.r3.display()
+        ret = f.getvalue()
+        self.assertEqual(self.p3, ret)
+
+    def test_display_offset_4(self):
+        f = io.StringIO()
+        with contextlib.redirect_stdout(f):
+            self.r4.display()
+        ret = f.getvalue()
+        self.assertEqual(self.p4, ret)
+
+        
 class TestStrMethod(unittest.TestCase):
     """Test __str__  method for Rectangle class"""
 

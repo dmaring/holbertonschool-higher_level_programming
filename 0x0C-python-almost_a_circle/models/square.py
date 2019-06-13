@@ -19,6 +19,7 @@ class Square(Rectangle):
                )
 
     def update(self, *args, **kwargs):
+        """Method for updating attributes of a square instance"""
         attrs = ['id', 'size', 'x', 'y']
         if args:
             for i in range(len(args)):
@@ -28,10 +29,12 @@ class Square(Rectangle):
                 setattr(self, k, v)
 
     @property
+    """Method for getting the size of the square"""
     def size(self):
         return(self.width)
 
     @size.setter
+    """Method for setting the size of the square"""
     def size(self, value):
         self.width = value
         self.height = value

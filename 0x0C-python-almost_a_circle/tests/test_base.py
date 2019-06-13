@@ -3,6 +3,7 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+import os
 """
 Module for unittests for the Base class
 """
@@ -188,6 +189,71 @@ class TestBaseDictionaryToInstance(unittest.TestCase):
 
     def test_is_not_equal_square(self):
         self.assertNotEqual(self.s1, self.s2)
+
+
+class TestBaseFileToInstanceNoFile(unittest.TestCase):
+    """Test class for no file found in method file_to_instance"""
+
+    def setUp(self):
+        try:
+            os.remove('Rectangle.json')
+            os.remove('Square.json')
+            os.remove('Base.json')
+        except:
+            pass
+
+    def test_file_not_exist(self):
+        ret = Rectangle.load_from_file()
+        self.assertEqual(ret, [])
+
+class TestBaseFileToInstance(unittest.TestCase):
+    """Test class for Base class method file_to_instance"""
+
+    def setUp(self):
+        try:
+            os.remove('Rectangle.json')
+            os.remove('Square.json')
+            os.remove('Base.json')
+        except:
+            pass
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+        self.list_rectangles_input = [self.r1, self.r2]
+
+        self.s1 = Square(5)
+        self.s2 = Square(7, 9, 1)
+        self.list_squares_input = [self.s1, self.s2]
+
+        Rectangle.save_to_file(self.list_rectangles_input)
+        self.list_rectangles_output = Rectangle.load_from_file()
+        self.cor_list = []
+        for rect in self.list_rectangles_input:
+            self.cor_list.append(str(rect))
+        self.ret_list = []
+        for rect in self.list_rectangles_output:
+            self.ret_list.append(str(rect))
+
+        Square.save_to_file(self.list_squares_input)
+        self.list_squares_output = Square.load_from_file()
+        self.cor_s_list = []
+        for square in self.list_squares_input:
+            self.cor_s_list.append(str(square))
+        self.ret_s_list = []
+        for square in self.list_squares_output:
+            self.ret_s_list.append(str(square))
+
+    def test_correct_file_load_rectangle(self):
+        self.assertEqual(self.cor_list, self.ret_list)
+
+    def test_correct_file_load_square(self):
+        self.assertEqual(self.cor_s_list, self.ret_s_list)
+
+    def test_not_same_object_rectangle(self):
+        self.assertIsNot(self.cor_list, self.ret_list)
+
+    def test_not_same_object_square(self):
+        self.assertIsNot(self.cor_s_list, self.ret_s_list)
+
 
 if __name__ == '__main__':
     unittest.main()

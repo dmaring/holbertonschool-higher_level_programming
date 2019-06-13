@@ -46,6 +46,7 @@ class Rectangle(Base):
             print()
 
     def to_dictionary(self):
+        """Method that returns a dictionary representation of itself"""
         rect_dict = {
             'id': self.id,
             'width': self.width,
@@ -72,40 +73,48 @@ class Rectangle(Base):
                 setattr(self, k, v)
 
     @property
+    """Method for getting width"""
     def width(self):
         return(self.__width)
 
     @width.setter
+    """Method for setting width"""
     def width(self, value):
         self.check_int('width', value)
         self.check_gr_0('width', value)
         self.__width = value
 
     @property
+    """Method for getting height"""
     def height(self):
         return(self.__height)
 
     @height.setter
+    """Method for setting height"""
     def height(self, value):
         self.check_int('height', value)
         self.check_gr_0('height', value)
         self.__height = value
 
     @property
+    """Method for getting x"""
     def x(self):
         return(self.__x)
 
     @x.setter
+    """Method for setting x"""
     def x(self, value):
         self.check_int('x', value)
         self.check_gr_eq_0('x', value)
         self.__x = value
 
     @property
+    """Method for getting y"""
     def y(self):
         return(self.__y)
 
     @y.setter
+    """Method for setting y"""
     def y(self, value):
         self.check_int('y', value)
         self.check_gr_eq_0('y', value)

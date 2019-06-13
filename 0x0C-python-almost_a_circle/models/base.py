@@ -5,7 +5,6 @@ This module contains the Base class
 import json
 
 
-
 class Base():
     """Class that represents Base"""
 
@@ -27,12 +26,11 @@ class Base():
         the JSON string representation of 'list_dictionaries'
         """
 
-        if not list_dictionaries or list_dictionaries == None:
+        if not list_dictionaries or list_dictionaries is None:
             return([])
         else:
             ret_str = json.dumps(list_dictionaries, sort_keys=True)
         return(ret_str)
-
 
     @staticmethod
     def from_json_string(json_string):
@@ -40,7 +38,7 @@ class Base():
         Method that returns a list of the JSON string representation
         json_string: string representing a list of dictionaries
         """
-        if not json_string or json_string == None or json_string == '[]':
+        if not json_string or json_string is None or json_string == '[]':
             return([])
         else:
             return(json.loads(json_string))
@@ -68,12 +66,32 @@ class Base():
             fp.write(json_data)
 
     @classmethod
+    def load_from_file(cls):
+        """
+        Method that returns a list of instances loaded from a
+        JSON file
+        """
+
+        # try to open file and catch exception if one does not exist
+        try:
+            with open('{}.json'.format(cls.__name__),
+                      'r', encoding="utf-8") as fp:
+                file_json = fp.read()
+        except:
+            return([])
+
+        objects = cls.from_json_string(file_json)
+        ret_list = []
+        for obj in objects:
+            inst_ = cls.create(**obj)
+            ret_list.append(inst_)
+
+        return(ret_list)
+
+    @classmethod
     def create(cls, **dictionary):
         """Method that creates an instance from a dictionary"""
-        # print(cls)
-        # print("Dir of cls is: {}".format(dir(cls)))
-        # print("__dict__ of cls is {}".format(cls.__dict__))
-        r1 = cls(1, 2, 3, 4)
+        r1 = cls(1, 2)
         r1.update(**dictionary)
         return(r1)
 
