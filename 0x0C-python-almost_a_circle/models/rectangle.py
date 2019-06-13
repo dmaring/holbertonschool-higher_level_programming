@@ -103,7 +103,6 @@ class Rectangle(Base):
         return(self.__x)
 
     @x.setter
-
     def x(self, value):
         """Method for setting x"""
         self.check_int('x', value)
