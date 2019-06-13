@@ -113,6 +113,7 @@ class TestUpdateMethod(unittest.TestCase):
         s1.update(size=7, id=89, y=1)
         self.assertEqual(str(s1), "[Square] (89) 12/1 - 7")
 
+
 class TestToDictionaryMethod(unittest.TestCase):
     """Testcases for the to dictionary method"""
 
