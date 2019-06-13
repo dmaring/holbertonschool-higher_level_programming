@@ -49,16 +49,14 @@ class Base():
         Method that saves a list of dictionary objects
         as json file
         """
-
         data = []
         if list_objs is None:
-            fpn = 'None.json'
-            data = '[]'
+            data = []
         else:
-            fpn = '{}.json'.format(list_objs[0].__class__.__name__)
             for obj in list_objs:
                 obj_dict = cls.to_dictionary(obj)
                 data.append(obj_dict)
+        fpn = '{}.json'.format(cls.__name__)
         json_data = cls.to_json_string(data)
         with open(fpn, 'w', encoding="utf-8") as fp:
             fp.write(json_data)
