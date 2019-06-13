@@ -87,9 +87,9 @@ class TestSquareSetterGetter(unittest.TestCase):
     def test_size_setter(self):
         s = Square(5)
         self.assertEqual(s.size, 5)
-        with self.assertRaises(TypeError,
-                          msg="width must be an integer"):
+        with self.assertRaises(TypeError, msg="width must be an integer"):
             s = Square('f')
+
 
 class TestUpdateMethod(unittest.TestCase):
     """Testcases for the square update method"""
@@ -111,7 +111,6 @@ class TestUpdateMethod(unittest.TestCase):
         self.assertEqual(str(s1), "[Square] (1) 12/1 - 7")
         s1.update(size=7, id=89, y=1)
         self.assertEqual(str(s1), "[Square] (89) 12/1 - 7")
-
 
 
 if __name__ == '__main__':

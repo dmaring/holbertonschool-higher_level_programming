@@ -30,27 +30,10 @@ class TestBaseClassCreation(unittest.TestCase):
         bo = Base(None)
         self.assertEqual(bo.id, 2)
 
-    def test_id_inf(self):
-        bo = Base(float('inf'))
-        #TODO what should this do
-
-    def test_id_neg_inf(self):
-        bo = Base(float('-inf'))
-        #TODO what should this do
-
-    def test_id_inf(self):
-        bo = Base(float('-inf'))
-        #TODO what should this do
-
-    def test_id_inf(self):
-        bo = Base(float('NaN'))
-        #TODO what should this do
-
 
 class TestBaseToJsonStringMethod(unittest.TestCase):
     """Test class for Base class to_json_string method"""
 
-    #test passing None
     def test_pass_none(self):
         ret = Base.to_json_string(None)
         self.assertEqual(ret, [])
@@ -73,7 +56,8 @@ class TestBaseToJsonStringMethod(unittest.TestCase):
         r2 = Rectangle(8, 9, 10, 11)
         rd2 = r2.to_dictionary()
         ret = Base.to_json_string([rd1, rd2])
-        str_ = '[{"height": 4, "id": 1, "width": 3, "x": 5, "y": 6}, {"height": 9, "id": 2, "width": 8, "x": 10, "y": 11}]'
+        str_ = '[{"height": 4, "id": 1, "width": 3, "x": 5, "y": 6}, ' +
+        '{"height": 9, "id": 2, "width": 8, "x": 10, "y": 11}]'
         self.assertEqual(ret, str_)
 
     def test_pass_list_dicts_type(self):
@@ -86,7 +70,6 @@ class TestBaseToJsonStringMethod(unittest.TestCase):
         self.assertIsInstance(ret, str)
 
 
-
 class TestBaseToSaveToFileMethod(unittest.TestCase):
     """Test class for Base class method save_to_file"""
 
@@ -97,7 +80,8 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
         Base.save_to_file([r1, r2])
         with open("Rectangle.json", "r") as file:
             file_read = file.read()
-        cmp_str = '[{"height": 7, "id": 1, "width": 10, "x": 2, "y": 8}, {"height": 4, "id": 2, "width": 2, "x": 0, "y": 0}]'
+        cmp_str = '[{"height": 7, "id": 1, "width": 10, "x": 2, "y": 8}, ' +
+        '{"height": 4, "id": 2, "width": 2, "x": 0, "y": 0}]'
         self.assertEqual(file_read, cmp_str)
 
     def test_correct_file_save_square(self):
@@ -107,7 +91,8 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
         Base.save_to_file([s1, s2])
         with open("Square.json", "r") as file:
             file_read = file.read()
-        cmp_str = '[{"height": 10, "id": 1, "width": 10, "x": 4, "y": 2}, {"height": 2, "id": 2, "width": 2, "x": 3, "y": 2}]'
+        cmp_str = '[{"height": 10, "id": 1, "width": 10, "x": 4, "y": 2}, ' +
+        '{"height": 2, "id": 2, "width": 2, "x": 3, "y": 2}]'
         self.assertEqual(file_read, cmp_str)
 
     def test_write_empty_file(self):
@@ -117,45 +102,45 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
             file_read = file.read()
         self.assertEqual(file_read, '"[]"')
 
+
 class TestBaseFromJsonStringMethod(unittest.TestCase):
     """Test class for Base class method json_to_string_method"""
     def setUp(self):
         Base.reset_id()
-        self.single_item = '[{"height": 4, "id": 1, "width": 3, "x": 0, "y": 0}]'
-        self.mult_item = '[{"height": 4, "id": 1, "width": 3, "x": 0, "y": 0}, {"height": 6, "id": 2, "width": 5, "x": 0, "y": 0}]'
+        self.single_item = '[{"height": 4, "id": 1, "width": 3, ' +
+        '"x": 0, "y": 0}]'
+        self.mult_item = '[{"height": 4, "id": 1, "width": 3, ' +
+        '"x": 0, "y": 0}, {"height": 6, "id": 2, "width": 5, "x": 0, "y": 0}]'
 
-    #test passing empty list
     def test_passing_empyt_list(self):
         self.assertEqual(Base.from_json_string('[]'), [])
 
-    #test passing None instead of list
     def test_passing_none(self):
         self.assertEqual(Base.from_json_string(None), [])
 
-    #test that object returned is correct with multiple dictionaries
     def test_pass_multiple(self):
         ret_val = Base.from_json_string(self.mult_item)
-        cor_val = [{'id': 1, 'y': 0, 'height': 4, 'x': 0, 'width': 3}, {'id': 2, 'y': 0, 'height': 6, 'x': 0, 'width': 5}]
+        cor_val = [{'id': 1, 'y': 0, 'height': 4, 'x': 0, 'width': 3},
+                   {'id': 2, 'y': 0, 'height': 6, 'x': 0, 'width': 5}]
         self.assertEqual(ret_val, cor_val)
 
-    #test that object returned is correct with 1 dictionary
     def test_pass_single(self):
         ret_val = Base.from_json_string(self.single_item)
         cor_val = [{'id': 1, 'y': 0, 'height': 4, 'x': 0, 'width': 3}]
         self.assertEqual(ret_val, cor_val)
 
-    #test object returned is list with 1 dictionary passed
     def test_pass_single_type_check(self):
         ret_val = Base.from_json_string(self.single_item)
         self.assertIsInstance(ret_val, list)
 
-    #test object returned is a list with multiple dictionaries
     def test_pass_mult_type_check(self):
         ret_val = Base.from_json_string(self.mult_item)
         self.assertIsInstance(ret_val, list)
 
+
 class TestBaseDictionaryToInstance(unittest.TestCase):
     """Test class for Base class method dictionary_to_instance"""
+
     def setUp(self):
         Base.reset_id()
         self.r1 = Rectangle(3, 5, 1)
@@ -205,6 +190,7 @@ class TestBaseFileToInstanceNoFile(unittest.TestCase):
     def test_file_not_exist(self):
         ret = Rectangle.load_from_file()
         self.assertEqual(ret, [])
+
 
 class TestBaseFileToInstance(unittest.TestCase):
     """Test class for Base class method file_to_instance"""

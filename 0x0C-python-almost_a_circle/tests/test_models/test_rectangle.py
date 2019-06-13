@@ -55,7 +55,6 @@ class TestRectangleClassCreation(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(2, 3, 4, float('nan'), 6)
 
-
     def test_width_height_x(self):
         r = Rectangle(3, 4, 5, 6)
         self.assertEqual(r.width, 3)
@@ -102,6 +101,7 @@ class TestAreaMethod(unittest.TestCase):
         r = Rectangle(3, 4, 3, 5, 6)
         self.assertEqual(r.area(), 12)
 
+
 class TestDisplayMethod(unittest.TestCase):
     """Test display method for Rectangle class"""
 
@@ -143,7 +143,7 @@ class TestDisplayMethod(unittest.TestCase):
         ret = f.getvalue()
         self.assertEqual(self.p4, ret)
 
-        
+
 class TestStrMethod(unittest.TestCase):
     """Test __str__  method for Rectangle class"""
 
@@ -151,6 +151,7 @@ class TestStrMethod(unittest.TestCase):
         r = Rectangle(3, 4, 5, 6, 4)
         r_string = '[Rectangle] (4) 5/6 - 3/4'
         self.assertEqual(r_string, r.__str__())
+
 
 class TestUpdateMethod(unittest.TestCase):
     """Test update method of the Rectangle class"""
@@ -200,6 +201,7 @@ class TestUpdateMethod(unittest.TestCase):
         self.assertEqual(r.y, 8)
         self.assertEqual(r.width, 10)
         self.assertEqual(r.height, 20)
+
 
 class TestToDictMethod(unittest.TestCase):
     def test_correct_output_str_(self):
