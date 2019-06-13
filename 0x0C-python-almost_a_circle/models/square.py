@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 This module contains the Square class
 """
@@ -29,12 +30,12 @@ class Square(Rectangle):
                 setattr(self, k, v)
 
     @property
-    """Method for getting the size of the square"""
     def size(self):
+        """Method for getting the size of the square"""
         return(self.width)
 
     @size.setter
-    """Method for setting the size of the square"""
     def size(self, value):
+        """Method for setting the size of the square"""
         self.width = value
         self.height = value
