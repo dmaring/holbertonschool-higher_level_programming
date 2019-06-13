@@ -4,6 +4,8 @@ This module contains the Base class
 """
 import json
 import csv
+import turtle
+import random
 
 
 class Base():
@@ -43,6 +45,29 @@ class Base():
             return([])
         else:
             return(json.loads(json_string))
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Method that draws the objects to the screen
+        """
+        colors = ['red', 'purple', 'blue', 'green', 'yellow', 'orange']
+
+        for dict_ in list_rectangles:
+            for i in range(2):
+                turtle.pencolor(colors[random.randint(1, 100) % 6])
+                turtle.forward(dict_.width * 2)
+                turtle.left(90)
+                turtle.forward(dict_.height * 2)
+                turtle.left(90)
+            turtle.reset()
+
+        for dict_ in list_squares:
+            for i in range(4):
+                turtle.pencolor(colors[random.randint(1, 100) % 6])
+                turtle.forward(dict_.size * 2)
+                turtle.left(90)
+            turtle.reset()
 
     @classmethod
     def save_to_file(cls, list_objs):
