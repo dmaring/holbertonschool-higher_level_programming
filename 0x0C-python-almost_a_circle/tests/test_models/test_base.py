@@ -254,5 +254,32 @@ class TestBaseFileToInstance(unittest.TestCase):
         self.assertIsNot(self.cor_s_list, self.ret_s_list)
 
 
+class TestBaseSaveToFileCsv(unittest.TestCase):
+    """Test class for save_to_file_csv class method"""
+
+    def setUp(self):
+        Base.reset_id()
+        self.r1 = Rectangle(10, 7, 2, 8)
+        self.r2 = Rectangle(2, 4)
+        self.list_rectangles_input = [self.r1, self.r2]
+
+        self.s1 = Square(5)
+        self.s2 = Square(7, 9, 1)
+        self.list_squares_input = [self.s1, self.s2]
+
+    def test_check_file_output_rectangle_csv(self):
+        self.r1.save_to_file_csv(self.list_rectangles_input)
+        with open('Rectangle.csv', 'r') as fp:
+            full_file = fp.read()
+        cor_str = "1,10,7,2,8\n2,2,4,0,0\n"
+        self.assertEqual(full_file, cor_str)
+
+    def test_check_file_output_square(self):
+        self.s1.save_to_file_csv(self.list_squares_input)
+        with open('Square.csv', 'r') as fp:
+            full_file = fp.read()
+        cor_str = "3,5,0,0\n4,7,9,1\n"
+        self.assertEqual(full_file, cor_str)
+
 if __name__ == '__main__':
     unittest.main()
