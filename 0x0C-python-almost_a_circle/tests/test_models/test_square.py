@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import unittest
-from models.square import Square
 """
 Module for unittests for the Square class
 """
+import unittest
+from models.square import Square
+from models.base import Base
 
 
 class TestSquareClassCreation(unittest.TestCase):
@@ -112,6 +113,18 @@ class TestUpdateMethod(unittest.TestCase):
         s1.update(size=7, id=89, y=1)
         self.assertEqual(str(s1), "[Square] (89) 12/1 - 7")
 
+class TestToDictionaryMethod(unittest.TestCase):
+    """Testcases for the to dictionary method"""
+
+    def setUp(self):
+        Base.reset_id()
+        self.s1 = Square(10, 2, 1)
+        self.s1_dictionary = self.s1.to_dictionary()
+        self.s2 = Square(1, 1)
+        self.s2.update(**self.s1_dictionary)
+
+    def test_isinstance(self):
+        self.assertIsInstance(self.s1_dictionary, dict)
 
 if __name__ == '__main__':
     unittest.main()

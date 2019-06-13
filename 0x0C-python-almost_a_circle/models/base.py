@@ -56,10 +56,8 @@ class Base():
             data = '[]'
         else:
             fpn = '{}.json'.format(list_objs[0].__class__.__name__)
-            # need to create a list of dictionaries from
-            # the list of object instances
             for obj in list_objs:
-                obj_dict = obj.to_dictionary()
+                obj_dict = cls.to_dictionary(obj)
                 data.append(obj_dict)
         json_data = cls.to_json_string(data)
         with open(fpn, 'w', encoding="utf-8") as fp:
@@ -72,7 +70,6 @@ class Base():
         JSON file
         """
 
-        # try to open file and catch exception if one does not exist
         try:
             with open('{}.json'.format(cls.__name__),
                       'r', encoding="utf-8") as fp:

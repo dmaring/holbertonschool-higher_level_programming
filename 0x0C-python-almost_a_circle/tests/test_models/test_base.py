@@ -1,12 +1,12 @@
 #!/usr/bin/python3
+"""
+Module for unittests for the Base class
+"""
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 import os
-"""
-Module for unittests for the Base class
-"""
 
 
 class TestBaseClassCreation(unittest.TestCase):
@@ -29,6 +29,18 @@ class TestBaseClassCreation(unittest.TestCase):
         self.assertEqual(bo.id, 1)
         bo = Base(None)
         self.assertEqual(bo.id, 2)
+
+
+class TestResetID(unittest.TestCase):
+    """Test class for class static reset_id method"""
+
+    def test_reset_id(self):
+        Base.reset_id()
+        Base()
+        Base()
+        self.assertEqual(2, Base._Base__nb_objects)
+        Base.reset_id()
+        self.assertEqual(0, Base._Base__nb_objects)
 
 
 class TestBaseToJsonStringMethod(unittest.TestCase):
@@ -77,7 +89,7 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
         Base.reset_id()
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
-        Base.save_to_file([r1, r2])
+        Rectangle.save_to_file([r1, r2])
         with open("Rectangle.json", "r") as file:
             file_read = file.read()
         cmp_str = ('[{"height": 7, "id": 1, "width": 10, "x": 2, "y": 8}, ' +
@@ -88,11 +100,11 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
         Base.reset_id()
         s1 = Square(10, 4, 2)
         s2 = Square(2, 3, 2)
-        Base.save_to_file([s1, s2])
+        Square.save_to_file([s1, s2])
         with open("Square.json", "r") as file:
             file_read = file.read()
-        cmp_str = ('[{"height": 10, "id": 1, "width": 10, "x": 4, "y": 2}, ' +
-                   '{"height": 2, "id": 2, "width": 2, "x": 3, "y": 2}]')
+        cmp_str = ('[{"id": 1, "size": 10, "x": 4, "y": 2}, ' +
+                   '{"id": 2, "size": 2, "x": 3, "y": 2}]')
         self.assertEqual(file_read, cmp_str)
 
     def test_write_empty_file(self):

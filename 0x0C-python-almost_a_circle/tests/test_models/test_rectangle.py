@@ -204,6 +204,8 @@ class TestUpdateMethod(unittest.TestCase):
 
 
 class TestToDictMethod(unittest.TestCase):
+    """Testcases for rectangle dictionary method"""
+    
     def test_correct_output_str_(self):
         Rectangle.reset_id()
         r1 = Rectangle(10, 2, 1, 9)
