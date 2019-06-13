@@ -57,7 +57,7 @@ class TestBaseToJsonStringMethod(unittest.TestCase):
         rd2 = r2.to_dictionary()
         ret = Base.to_json_string([rd1, rd2])
         str_ = ('[{"height": 4, "id": 1, "width": 3, "x": 5, "y": 6}, ' +
-        '{"height": 9, "id": 2, "width": 8, "x": 10, "y": 11}]')
+                '{"height": 9, "id": 2, "width": 8, "x": 10, "y": 11}]')
         self.assertEqual(ret, str_)
 
     def test_pass_list_dicts_type(self):
@@ -81,7 +81,7 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             file_read = file.read()
         cmp_str = ('[{"height": 7, "id": 1, "width": 10, "x": 2, "y": 8}, ' +
-        '{"height": 4, "id": 2, "width": 2, "x": 0, "y": 0}]')
+                   '{"height": 4, "id": 2, "width": 2, "x": 0, "y": 0}]')
         self.assertEqual(file_read, cmp_str)
 
     def test_correct_file_save_square(self):
@@ -92,7 +92,7 @@ class TestBaseToSaveToFileMethod(unittest.TestCase):
         with open("Square.json", "r") as file:
             file_read = file.read()
         cmp_str = ('[{"height": 10, "id": 1, "width": 10, "x": 4, "y": 2}, ' +
-        '{"height": 2, "id": 2, "width": 2, "x": 3, "y": 2}]')
+                   '{"height": 2, "id": 2, "width": 2, "x": 3, "y": 2}]')
         self.assertEqual(file_read, cmp_str)
 
     def test_write_empty_file(self):
@@ -108,9 +108,10 @@ class TestBaseFromJsonStringMethod(unittest.TestCase):
     def setUp(self):
         Base.reset_id()
         self.single_item = ('[{"height": 4, "id": 1, "width": 3, ' +
-        '"x": 0, "y": 0}]')
-        self.mult_item = ('[{"height": 4, "id": 1, "width": 3, ' +
-        '"x": 0, "y": 0}, {"height": 6, "id": 2, "width": 5, "x": 0, "y": 0}]')
+                            '"x": 0, "y": 0}]')
+        self.mult_item = ('[{"height": 4, "id": 1, "width": 3, "x": 0, ' +
+                          '"y": 0}, {"height": 6, "id": 2, "width": 5, ' +
+                          '"x": 0, "y": 0}]')
 
     def test_passing_empyt_list(self):
         self.assertEqual(Base.from_json_string('[]'), [])
