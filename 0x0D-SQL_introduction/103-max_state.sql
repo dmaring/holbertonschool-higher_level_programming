@@ -4,5 +4,5 @@ SELECT `state`, MAX(`value`) as `max_temp`
 FROM `temperatures`
 WHERE `month` = 7 OR `month` = 8
 GROUP BY `state`
-ORDER BY `max_temp` DESC
+ORDER BY `state` ASC
 LIMIT 3;
