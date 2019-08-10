@@ -20,12 +20,7 @@ if __name__ == '__main__':
                 "FROM cities JOIN states " +
                 "ON cities.state_id = states.id " +
                 "WHERE states.name = %s ORDER BY cities.id ASC;", (statename,))
-    query_rows = cur.fetchall()
-    for i, row in enumerate(query_rows):
-        row = row[0]
-        if i < len(query_rows) - 1:
-            print(row + ", ", end='')
-    else:
-        print(row)
-        cur.close()
-        conn.close()
+    rows = cur.fetchall()
+    print(", ".join([row[0] for row in rows]))
+    cur.close()
+    conn.close()
