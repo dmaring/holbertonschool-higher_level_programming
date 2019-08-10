@@ -19,7 +19,7 @@ if __name__ == '__main__':
     cur.execute("SELECT cities.name " +
                 "FROM cities JOIN states " +
                 "ON cities.state_id = states.id " +
-                "WHERE BINARY states.name = %s;", (statename,))
+                "WHERE states.name = %s ORDER BY cities.id ASC;", (statename,))
     query_rows = cur.fetchall()
     for i, row in enumerate(query_rows):
         row = row[0]
