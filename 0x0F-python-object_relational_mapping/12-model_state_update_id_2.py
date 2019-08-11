@@ -17,9 +17,10 @@ if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(username, password,
                                    dbname), pool_pre_ping=True)
-    Session = sessionmaker(bind=engine)
     Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
     session = Session()
+
     query = session.query(State).filter(State.id == 2).first()
     query.name = "New Mexico"
     session.commit()
