@@ -10,7 +10,7 @@ def getStatus():
     """
     A function that fetches a header value for X-Request-Id
     """
-    res = requests.get('https://intranet.hbtn.io/status')
+    res = requests.get(sys.argv[1])
     _id = res.headers.get('X-Request-Id')
     print(_id)
 
