@@ -14,8 +14,8 @@ def getStatus():
     res = requests.get('https://intranet.hbtn.io/status')
     text = res.text
     print("Body response:")
-    print("\t - type: {}".format(type(text)))
-    print("\t - content: {}".format(res.reason))
+    print("\t- type: {}".format(type(text)))
+    print("\t- content: {}".format(res.reason))
 
 
 if __name__ == '__main__':
