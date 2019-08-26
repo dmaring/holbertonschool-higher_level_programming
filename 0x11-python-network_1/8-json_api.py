@@ -16,7 +16,7 @@ def searchAPI():
         _data = {'q': ""}
     else:
         _data = {'q': sys.argv[1]}
-    _url = 'http://172.31.54.208:47065/search_user'
+    _url = 'http://0.0.0.0:5000/search_user'
     res = requests.request('POST', _url, data=_data)
     try:
         _json = res.json()
