@@ -12,7 +12,7 @@ def getStatus():
         c_type = type(content)
         headers = res.headers
         _utf8 = ""
-        if 'charset=utf-8' in headers['Content-Type']:
+        if 'charset=utf-8' in headers.get('Content-Type'):
             _utf8 = "OK"
         print("Body response:")
         print("\t- type: {}".format(c_type))
