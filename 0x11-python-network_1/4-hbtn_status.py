@@ -13,7 +13,10 @@ def getStatus():
     with the requests module
     """
     res = requests.get('https://intranet.hbtn.io/status')
-    print(res.status_code)
+    text = res.text
+    print("Body response:")
+    print("\t - type: {}".format(type(text)))
+    print("\t - content: {}".format(res.reason))
 
 
 if __name__ == '__main__':
