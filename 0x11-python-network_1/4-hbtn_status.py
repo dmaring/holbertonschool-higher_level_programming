@@ -15,7 +15,7 @@ def getStatus():
     text = res.text
     print("Body response:")
     print("\t- type: {}".format(type(text)))
-    print("\t- content: {}".format(res.reason))
+    print("\t- content: {}".format(res.content.decode()))
 
 
 if __name__ == '__main__':
