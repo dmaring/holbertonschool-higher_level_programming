@@ -9,10 +9,8 @@ def getStatus():
     A function that fetches https://intranet.hbtn.io/status
     """
     with urllib.request.urlopen(sys.argv[1]) as res:
-        content = res.read()
-        c_type = type(content)
-        headers = res.headers
-        print(headers['X-Request-Id'])
+        req_id = res.headers.get('X-Request-Id')
+        print(req_id)
 
 
 if __name__ == '__main__':
