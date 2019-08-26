@@ -9,12 +9,12 @@ def getStatus():
     """
     with urllib.request.urlopen('https://intranet.hbtn.io/status') as res:
         content = res.read()
-        c_type = type(content.decode())
+        c_type = type(content)
         headers = res.headers
         print("Body response:")
         print("\t- type: {}".format(c_type))
         print("\t- content: {}".format(content))
-        print("\t- utf8 content: {}".format(content.decode('utf-8'))
+        print("\t- utf8 content: {}".format(content.decode('utf-8')))
 
 if __name__ == '__main__':
     getStatus()
