@@ -14,9 +14,12 @@ def searchAPI():
     user = sys.argv[1]
     repo = sys.argv[2]
     res = requests.get('http://api.github.com/repos/{}/{}/commits'
-                       .format(user, repo))
+                       .format(repo, user))
     _list = res.json()
-    for i in range(10):
+    _len = len(_list)
+    if _len > 10:
+        _len = 10
+    for i in range(_len):
         _sha = _list[i].get('sha')
         name = _list[i].get('commit').get('author').get('name')
         print("{}: {}".format(_sha, name))
