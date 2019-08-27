@@ -5,7 +5,6 @@ A Python script that searches twitter
 import requests
 import sys
 import base64
-import json
 
 
 def getBearerToken():
