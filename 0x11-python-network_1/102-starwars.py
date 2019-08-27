@@ -6,14 +6,14 @@ import requests
 import sys
 
 
-def movieName(url):
+def movieName(url, session):
     """
     a function that returns the name of a star wars movie
     """
 
-    res = requests.get(url)
+    res = session.get(url)
     title = res.json().get('title')
-    return('\t{}'.format(title))
+    return(title)
 
 
 def searchAPI():
@@ -22,21 +22,22 @@ def searchAPI():
     """
     _params = {'search': sys.argv[1]}
     _url = 'https://swapi.co/api/people/'
-    res = requests.request('GET', _url, params=_params)
+    s = requests.Session()
+    res = s.request('GET', _url, params=_params)
     _dict = res.json()
     print("Number of results: {}".format(_dict.get('count')))
     for result in _dict.get('results'):
         print(result.get('name'))
         for film in result.get('films'):
-            print(movieName(film))
+            print("\t{}".format(movieName(film, s)))
     while _dict.get('next'):
         _url = _dict['next']
-        res = requests.request('GET', _url)
+        res = s.request('GET', _url)
         _dict = res.json()
         for result in _dict.get('results'):
             print(result.get('name'))
             for film in result.get('films'):
-                print(movieName(film))
+                print("\t{}".format(movieName(film, s)))
 
 
 if __name__ == '__main__':
