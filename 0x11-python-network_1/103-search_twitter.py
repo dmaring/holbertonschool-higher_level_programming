@@ -35,22 +35,21 @@ def searchAPI():
     """
     A function that searches the twitter api
     """
-    _search = requests.utils.quote(sys.argv[3])
+
+    _search = sys.argv[3]
     _token = getBearerToken()
     _url = 'https://api.twitter.com/1.1/search/tweets.json'
-    _params = {'q': _search,
-               'count': '5',
-               'result_type': 'mixed'}
+    _params = {'q': _search, 'count': '5',}
     _headers = {'Authorization': "Bearer {}".format(_token)}
 
     res = requests.request('GET', _url, headers=_headers, params=_params)
-    parsed = (res.json())
+    parsed = res.json()
     statuses = parsed.get('statuses')
     for _dict in statuses:
         _id = _dict.get('id')
         _text = _dict.get('text')
         _name = _dict.get('user').get('name')
         print("[{}] {} by {}".format(_id, _text, _name))
-    # print(json.dumps(statuses, indent=4, sort_keys=True))
+
 if __name__ == '__main__':
     searchAPI()
