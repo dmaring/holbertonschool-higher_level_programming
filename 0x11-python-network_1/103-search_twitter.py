@@ -39,7 +39,7 @@ def searchAPI():
     _search = sys.argv[3]
     _token = getBearerToken()
     _url = 'https://api.twitter.com/1.1/search/tweets.json'
-    _params = {'q': _search, 'count': '5',}
+    _params = {'q': _search, 'count': '5'}
     _headers = {'Authorization': "Bearer {}".format(_token)}
 
     res = requests.request('GET', _url, headers=_headers, params=_params)
