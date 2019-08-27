@@ -35,7 +35,7 @@ def searchAPI():
     """
     A function that searches the twitter api
     """
-    _search = sys.argv[3]
+    _search = requests.utils.quote(sys.argv[3])
     _token = getBearerToken()
     _url = 'https://api.twitter.com/1.1/search/tweets.json'
     _params = {'q': _search,
