@@ -13,7 +13,7 @@ def movieName(url):
 
     res = requests.get(url)
     title = res.json().get('title')
-    return('\t {}'.format(title))
+    return('\t{}'.format(title))
 
 
 def searchAPI():
