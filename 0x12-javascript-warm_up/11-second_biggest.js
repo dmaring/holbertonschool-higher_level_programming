@@ -8,5 +8,5 @@ if (len < 3) {
   const args = process.argv.slice(2);
   args.sort();
   args.reverse();
-  console.log(args[1]);
+  console.log(parseInt(args[1]));
 }
