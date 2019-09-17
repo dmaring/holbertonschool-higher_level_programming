@@ -1,8 +1,12 @@
 #!/usr/bin/node
-if (process.argv.length < 3) {
+const len = process.argv.length;
+if (len < 3) {
   console.log(0);
-} else if (process.argv.length === 3) {
+} else if (len === 3) {
   console.log(1);
 } else {
-  process.argv.forEach();
+  const args = process.argv.slice(2);
+  args.sort();
+  args.reverse();
+  console.log(args[1]);
 }
