@@ -1,7 +1,9 @@
 #!/usr/bin/node
 const x = parseInt(process.argv[2]);
-if (isNaN(x)) {
+if (x === undefined || isNaN(x)) {
   console.log(1);
+} else {
+  console.log(factorial(x));
 }
 
 function factorial (a) {
@@ -11,5 +13,3 @@ function factorial (a) {
     return a * (factorial(a - 1));
   }
 }
-
-console.log(factorial(x));
