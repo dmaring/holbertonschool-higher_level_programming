@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const myDict = require('./101-data').dict;
 
 const newDict = {};
