@@ -6,7 +6,7 @@ let count = 0;
 function countAppearances (movieList) {
   for (let i = 0; i < movieList.length; i++) {
     for (let j = 0; j < movieList[i].characters.length; j++) {
-      if (movieList[i].characters[j] === 'https://swapi.co/api/people/18/') {
+      if (movieList[i].characters[j].includes('18')) {
         count++;
       }
     }
