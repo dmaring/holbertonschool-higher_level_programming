@@ -7,7 +7,7 @@ const fs = require('fs');
 const textA = fs.readFileSync(fileA, 'utf8');
 const textB = fs.readFileSync(fileB, 'utf8');
 
-const newText = textA + '\n' + textB + '\n';
+const newText = textA + textB;
 
 fs.appendFile(fileC, newText, function (err) {
   if (err) throw err;
