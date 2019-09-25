@@ -37,7 +37,7 @@ request.post(options, (e, r, body) => {
     (e, r, body) => {
       const statuses = (JSON.parse(body).statuses);
       for (let i = 0; i < statuses.length; i++) {
-        console.log(`[${statuses[i].id}] ${statuses[i].text} by ${statuses[i].user.name}\n`);
+        console.log(`[${statuses[i].id}] ${statuses[i].text} by ${statuses[i].user.name}`);
       }
     }
   );
